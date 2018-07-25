@@ -1,0 +1,10 @@
+# 指令
+>mvn指令  
+> * 跳过test：mvn package -Dmaven.test.skip=true
+
+# 功能
+> 服务提供者
+```
+1、调用注册到eureka的服务
+2、使用eureka
+```

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright (C) 2017 Baidu, Inc. All Rights Reserved.
+  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dzz.microservice.mapper.TestMapper" >
+
+    <resultMap id="BaseResultMap" type="com.dzz.microservice.entity.ApiTest" >
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="logical_delete" property="logicalDelete" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, name, create_time, update_time, logical_delete
+    </sql>
+
+    <!--<sql id="Cdn_Column_List" >-->
+        <!--lc.id, lc.private_ip, lc.public_ip, lc.create_time, lc.update_time, lc.available, lc.logical_delete-->
+    <!--</sql>-->
+
+    <select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM TEST a
+        WHERE a.id = #{id} AND a.logical_delete = 0;
+    </select>
+
+</mapper>
